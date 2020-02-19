@@ -7,10 +7,9 @@
 * Run `source venv/bin/activate` to switch to your newly created environment
 * Run `pip install -r requirements.txt` to install the required libraries
 * Make sure your models are compiled in your dbt project by running `dbt compile`
-* Pass in the filename of a compiled model file to generate a column spec
-    * Example: `python3 dbt-model-parser.py --model /Users/johnhageman/code/rigup/dbt/sample_project/target/compiled/my_new_project/example/production_user.sql`
+* Pass in the filename of a compiled model file to generate a column spec and a default test to create if needed
+    * Example with a test: `python3 dbt-model-parser.py --model /Users/johnhageman/code/rigup/dbt/sample_project/target/compiled/my_new_project/example/production_user.sql --default-test unique`
     * Example Output: 
-    
 ```yaml
 models:
   name: production_user
@@ -19,169 +18,260 @@ models:
   - name: activated_at
     description: description of activated_at
     tests:
-    - not_null
+    - unique
   - name: availability_status
     description: description of availability_status
     tests:
-    - not_null
+    - unique
   - name: city
     description: description of city
     tests:
-    - not_null
+    - unique
   - name: company_class
     description: description of company_class
     tests:
-    - not_null
+    - unique
   - name: company_id
     description: description of company_id
     tests:
-    - not_null
+    - unique
   - name: company_name
     description: description of company_name
     tests:
-    - not_null
+    - unique
   - name: company_native_id
     description: description of company_native_id
     tests:
-    - not_null
+    - unique
   - name: country
     description: description of country
     tests:
-    - not_null
+    - unique
   - name: created_at
     description: description of created_at
     tests:
-    - not_null
+    - unique
   - name: current_sign_in_at
     description: description of current_sign_in_at
     tests:
-    - not_null
+    - unique
   - name: date_of_birth
     description: description of date_of_birth
     tests:
-    - not_null
+    - unique
   - name: eligibility_status
     description: description of eligibility_status
     tests:
-    - not_null
+    - unique
   - name: email
     description: description of email
     tests:
-    - not_null
+    - unique
   - name: headline
     description: description of headline
     tests:
-    - not_null
+    - unique
   - name: id
     description: description of id
     tests:
-    - not_null
+    - unique
   - name: initial_use_case
     description: description of initial_use_case
     tests:
-    - not_null
+    - unique
   - name: introduced_by
     description: description of introduced_by
     tests:
-    - not_null
+    - unique
   - name: introduced_through
     description: description of introduced_through
     tests:
-    - not_null
+    - unique
   - name: is_rigup
     description: description of is_rigup
     tests:
-    - not_null
+    - unique
   - name: origin
     description: description of origin
     tests:
-    - not_null
+    - unique
   - name: last_active_date
     description: description of last_active_date
     tests:
-    - not_null
+    - unique
   - name: last_sign_in_at
     description: description of last_sign_in_at
     tests:
-    - not_null
+    - unique
   - name: linkedin_url
     description: description of linkedin_url
     tests:
-    - not_null
+    - unique
   - name: marketplace_status
     description: description of marketplace_status
     tests:
-    - not_null
+    - unique
   - name: name
     description: description of name
     tests:
-    - not_null
+    - unique
   - name: office_phone
     description: description of office_phone
     tests:
-    - not_null
+    - unique
   - name: onboarding_status
     description: description of onboarding_status
     tests:
-    - not_null
+    - unique
   - name: operational_role
     description: description of operational_role
     tests:
-    - not_null
+    - unique
   - name: origin
     description: description of origin
     tests:
-    - not_null
+    - unique
   - name: phone
     description: description of phone
     tests:
-    - not_null
+    - unique
   - name: profile_id
     description: description of profile_id
     tests:
-    - not_null
+    - unique
   - name: profile_status
     description: description of profile_status
     tests:
-    - not_null
+    - unique
   - name: referral_code
     description: description of referral_code
     tests:
-    - not_null
+    - unique
   - name: role
     description: description of role
     tests:
-    - not_null
+    - unique
   - name: rua_description
     description: description of rua_description
     tests:
-    - not_null
+    - unique
   - name: sign_in_count
     description: description of sign_in_count
     tests:
-    - not_null
+    - unique
   - name: source
     description: description of source
     tests:
-    - not_null
+    - unique
   - name: state
     description: description of state
     tests:
-    - not_null
+    - unique
   - name: status
     description: description of status
     tests:
-    - not_null
+    - unique
   - name: street_address
     description: description of street_address
     tests:
-    - not_null
+    - unique
   - name: user_class
     description: description of user_class
     tests:
-    - not_null
+    - unique
   - name: zipcode
     description: description of zipcode
     tests:
-    - not_null
+    - unique
+```
+    * Example without a test: `python3 dbt-model-parser.py --model /Users/johnhageman/code/rigup/dbt/sample_project/target/compiled/my_new_project/example/production_user.sql`
+```yaml
+models:
+  name: production_user
+  description: description of production_user
+  columns:
+  - name: activated_at
+    description: description of activated_at
+  - name: availability_status
+    description: description of availability_status
+  - name: city
+    description: description of city
+  - name: company_class
+    description: description of company_class
+  - name: company_id
+    description: description of company_id
+  - name: company_name
+    description: description of company_name
+  - name: company_native_id
+    description: description of company_native_id
+  - name: country
+    description: description of country
+  - name: created_at
+    description: description of created_at
+  - name: current_sign_in_at
+    description: description of current_sign_in_at
+  - name: date_of_birth
+    description: description of date_of_birth
+  - name: eligibility_status
+    description: description of eligibility_status
+  - name: email
+    description: description of email
+  - name: headline
+    description: description of headline
+  - name: id
+    description: description of id
+  - name: initial_use_case
+    description: description of initial_use_case
+  - name: introduced_by
+    description: description of introduced_by
+  - name: introduced_through
+    description: description of introduced_through
+  - name: is_rigup
+    description: description of is_rigup
+  - name: origin
+    description: description of origin
+  - name: last_active_date
+    description: description of last_active_date
+  - name: last_sign_in_at
+    description: description of last_sign_in_at
+  - name: linkedin_url
+    description: description of linkedin_url
+  - name: marketplace_status
+    description: description of marketplace_status
+  - name: name
+    description: description of name
+  - name: office_phone
+    description: description of office_phone
+  - name: onboarding_status
+    description: description of onboarding_status
+  - name: operational_role
+    description: description of operational_role
+  - name: origin
+    description: description of origin
+  - name: phone
+    description: description of phone
+  - name: profile_id
+    description: description of profile_id
+  - name: profile_status
+    description: description of profile_status
+  - name: referral_code
+    description: description of referral_code
+  - name: role
+    description: description of role
+  - name: rua_description
+    description: description of rua_description
+  - name: sign_in_count
+    description: description of sign_in_count
+  - name: source
+    description: description of source
+  - name: state
+    description: description of state
+  - name: status
+    description: description of status
+  - name: street_address
+    description: description of street_address
+  - name: user_class
+    description: description of user_class
+  - name: zipcode
+    description: description of zipcode
 ```
