@@ -9,7 +9,10 @@
 * Make sure your models are compiled in your dbt project by running `dbt compile`
 * Pass in the filename of a compiled model file to generate a column spec
     * Example: `python3 dbt-model-parser.py --model /Users/johnhageman/code/rigup/dbt/sample_project/target/compiled/my_new_project/example/production_user.sql`
-    * Example Output: ```models:
+    * Example Output: 
+    
+```yaml
+models:
   name: production_user
   description: description of production_user
   columns:
@@ -180,4 +183,5 @@
   - name: zipcode
     description: description of zipcode
     tests:
-    - not_null```
+    - not_null
+```
